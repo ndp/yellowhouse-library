@@ -66,6 +66,31 @@ Favorite Folktales From Around the World	Jane Yolen	Folktales, Allegory
 Finding Our Way	Streetside Stories	Real Tales
 The Fourteenth Goldfish	Jennifer Holm	Science Fiction, Allegory
 Five Children and It	E. Nesbit	Fantasy
+The Girl Who Circumnavigated Fairyland in a Ship of her Own Making	Catherynne M. Valente	Fantasy
+The Girl Who Fell Beneath Fairyland and Led the Revels There	Catherynne M. Valente	Fantasy
+The Girl Who Soared Over Fairyland and Cut the Moon in Two	Catherynne M. Valente	Fantasy
+The Boy Who Los Fairyland	Catherynne M. Valente	Fantasy
+Grimms Fairy Tales	Jacob and Wilhelm Grimm	Fairy Tales
+D'Aulaires'  Book of Greek Myths	Ingri Mortenson and Edgar Parin d'Aulaire	Myths
+The Girl Who Could Fly	Victoria Forester	Fiction
+The Golden Specific	S.E. Grove	Fantasy
+The Golden Compass	Philip Pullman
+The Subtle Knife	Philip Pullman
+The Amber Spyglass	Philip Pullman
+George's Cosmic Treasure Hunt	Lucy & Stephen Hawking
+George's Secret Key to the Universe	Lucy & Stephen Hawking
+Great Expectations	Charles Dickens		Classics
+Ginger Pye	Eleanor Estes
+Harriet the Spy	Louise Fitzhugh	Realistic Fiction, Allegory
+Heartbeat	Sharon Creech	Realistic Fiction, Free Verse
+The House on Mango Street	Sandra Cisneros
+Hieronymus White	Jeff Moss
+Homecoming	Cynthia Voigt
+Harry Potter and the Sorcerers Stone	J.K. Rowling	Fantasy	Magic, Hogwarts, Wizards and Witches, Voldemort, Sorcerers Stone	Harry Potter
+Harry Potter and the Chamber of Secrets	J.K. Rowling	Fantasy	Magic, Hogwarts, Wizards and Witches, Voldemort, Chamber of Secrets	Harry Potter
+Harry Potter and the Prisoner of Azkaban	J.K. Rowling	Fantasy	Magic, Hogwarts, Wizards and Witches, Sirius Black	Harry Potter
+Harry Potter and the Goblet of Fire	J.K. Rowling	Fantasy	Magic, Hogwarts, Wizards and Witches, Triwizard Tournament, Voldemort	Harry Potter
+Harry Potter and the Order of the Phoenix	J.K. Rowling	Fantasy
 SPREADSHEET
 
 require 'csv'
