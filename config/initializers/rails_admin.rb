@@ -19,7 +19,7 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  config.included_models = ['Book', 'Character', 'Genre', 'Subject']
+  config.included_models = ['Book', 'Author', 'Character', 'Genre', 'Subject']
 
   config.actions do
     dashboard do
