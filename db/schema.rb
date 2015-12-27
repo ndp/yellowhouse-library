@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20151227161911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authors", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "subject_id"
@@ -27,28 +33,30 @@ ActiveRecord::Schema.define(version: 20151227161911) do
   add_index "book_subjects", ["subject_id"], name: "index_book_subjects_on_subject_id", using: :btree
 
   create_table "books", force: :cascade do |t|
-    t.string   "title"
-    t.string   "author"
+    t.string   "title",      null: false
+    t.integer  "author_id"
     t.integer  "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "books", ["author_id"], name: "index_books_on_author_id", using: :btree
   add_index "books", ["genre_id"], name: "index_books_on_genre_id", using: :btree
 
   create_table "genres", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "book_subjects", "books"
   add_foreign_key "book_subjects", "subjects"
+  add_foreign_key "books", "authors"
   add_foreign_key "books", "genres"
 end
