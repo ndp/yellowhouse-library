@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227161911) do
+ActiveRecord::Schema.define(version: 20151227190128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20151227161911) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "book_characters", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "book_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "book_characters", ["book_id"], name: "index_book_characters_on_book_id", using: :btree
+  add_index "book_characters", ["character_id"], name: "index_book_characters_on_character_id", using: :btree
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
@@ -43,6 +53,12 @@ ActiveRecord::Schema.define(version: 20151227161911) do
   add_index "books", ["author_id"], name: "index_books_on_author_id", using: :btree
   add_index "books", ["genre_id"], name: "index_books_on_genre_id", using: :btree
 
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -55,6 +71,8 @@ ActiveRecord::Schema.define(version: 20151227161911) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "book_characters", "books"
+  add_foreign_key "book_characters", "characters"
   add_foreign_key "book_subjects", "books"
   add_foreign_key "book_subjects", "subjects"
   add_foreign_key "books", "authors"
