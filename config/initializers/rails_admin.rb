@@ -19,8 +19,12 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.included_models = ['Book', 'Character', 'Genre', 'Subject']
+
   config.actions do
-    dashboard                     # mandatory
+    dashboard do
+      statistics false
+    end
     index                         # mandatory
     new
     # export
@@ -34,4 +38,5 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
 end
