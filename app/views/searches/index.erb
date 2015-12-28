@@ -1,0 +1,44 @@
+<input name="q"
+       autocomplete="off"
+       spellcheck="false"
+       autocorrect="off"
+       placeholder="Worn-in Peas" id="book-search" style="width:100%"/>
+
+<ul id="results">
+
+
+</ul>
+<script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var client = algoliasearch('ZBYD2DEL4I', 'b850c9abf99836c0d3368190f82e2f5d');
+//        $('#book-search').focus().typeahead(null, {
+//            source: client.initIndex('<%= Book.index_name %>').ttAdapter(),
+//            displayKey: 'title',
+//            templates: {
+//                suggestion: function (hit) {
+//                    console.log('SUGGESTION')
+//                    console.log(hit);
+//                }
+//            }
+//        });
+
+        $searchInput = $('#book-search');
+        $searchInput
+                .on('keyup', function() {
+                    var query = $(this).val();
+                    algoliaHelper.setQuery(query).search();
+                })
+                .focus();
+
+// Search results
+        algoliaHelper.on('result', function(content, state) {
+            console.log(content);
+        });
+
+
+        $results = $('#results')
+    });
+</script>
