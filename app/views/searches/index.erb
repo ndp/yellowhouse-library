@@ -2,43 +2,68 @@
        autocomplete="off"
        spellcheck="false"
        autocorrect="off"
-       placeholder="Worn-in Peas" id="book-search" style="width:100%"/>
+       placeholder="The Tail of Two Kitties" id="book-search" style="width:100%"/>
 
 <ul id="results">
 
 
 </ul>
-<script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+<script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.js"></script>
 <script type="text/javascript">
     $(function () {
-        var client = algoliasearch('ZBYD2DEL4I', 'b850c9abf99836c0d3368190f82e2f5d');
-//        $('#book-search').focus().typeahead(null, {
-//            source: client.initIndex('<%= Book.index_name %>').ttAdapter(),
-//            displayKey: 'title',
-//            templates: {
-//                suggestion: function (hit) {
-//                    console.log('SUGGESTION')
-//                    console.log(hit);
-//                }
-//            }
-//        });
+        // Replace with your own values
+        var APPLICATION_ID = 'ZBYD2DEL4I';
+        var SEARCH_ONLY_API_KEY = 'b850c9abf99836c0d3368190f82e2f5d';
+        var INDEX_NAME = '<%= Book.index_name %>';
+        var PARAMS = {
+            hitsPerPage: 30,
+        };
 
-        $searchInput = $('#book-search');
+        var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+        var helper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+
+
+        var $searchInput = $('#book-search');
         $searchInput
-                .on('keyup', function() {
+                .on('keyup', function () {
                     var query = $(this).val();
-                    algoliaHelper.setQuery(query).search();
+                    helper.setQuery(query).search();
                 })
                 .focus();
 
-// Search results
-        algoliaHelper.on('result', function(content, state) {
-            console.log(content);
+        $results = $('#results')
+        helper.on('result', function (content, state) {
+            $results.empty()
+            for (var i = 0; i < content.hits.length; i++) {
+                var result = content.hits[i]._highlightResult;
+                console.log(result)
+                var $li = $('<li>')
+                $li.html(result.title.value)
+                if (result.author_name.matchLevel !== 'none') {
+                    $li.append('<br> by ')
+                    $li.append(result.author_name.value)
+                }
+
+                if (result.character_names && result.character_names.matchLevel !== 'none') {
+                    $li.append('<br>Characters: ')
+                    $li.append(result.character_names.value)
+                }
+
+                if (result.genre_name && result.genre_name.matchLevel !== 'none') {
+                    $li.append('<br>Genre: ')
+                    $li.append(result.genre_name.value)
+                }
+
+                if (result.subject_names && result.subject_names.matchLevel !== 'none') {
+                    $li.append('<br>Subjects: ')
+                    $li.append(result.subject_names.value)
+                }
+
+
+                $li.appendTo($results)
+            }
         });
 
 
-        $results = $('#results')
     });
 </script>

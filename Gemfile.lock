@@ -36,6 +36,12 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    algoliasearch (1.6.1)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.14.1)
+      algoliasearch (>= 1.2.14)
+      json (>= 1.5.1)
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -58,6 +64,7 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    httpclient (2.7.0.1)
     i18n (0.7.0)
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -170,6 +177,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch-rails
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
@@ -184,4 +192,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.1
+   1.11.0

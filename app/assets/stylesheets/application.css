@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+html, body, h2 {
+  margin: 0;
+  padding: 0;
+}
+body, input, ul, li, h2 {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+}
+
+h2 {
+  background-color: cornsilk;
+  color: darkolivegreen;
+  padding: 20px;
+}
