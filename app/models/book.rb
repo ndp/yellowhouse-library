@@ -24,11 +24,11 @@ class Book < ActiveRecord::Base
   end
 
   def subject_names
-    subjects.map(&:name).join(',')
+    subjects.map(&:name).to_sentence
   end
 
   def character_names
-    characters.map(&:name).join(',')
+    characters.map(&:name).to_sentence
   end
 
 
