@@ -12,9 +12,42 @@ class Book < ActiveRecord::Base
   include AlgoliaSearch
   algoliasearch index_name: "Book_#{Rails.env}" do
     attribute :title, :author_name, :genre_name, :subject_names, :character_names
+  def fetch_book_info
+    conn = Faraday.new(:url => 'http://isbndb.com/api/v2/json/1VRHA2TN/book')
+    response = conn.get title.parameterize('_')
+    JSON.parse(response.body)
+  end
+
+  def fetch_and_save_book_info
+    json = fetch_book_info
+    if json['data']
+      data= json['data'].first
+      self.isbn10 = data['isbn10'] unless data['isbn10'].blank?
+      self.isbn13 = data['isbn13'] unless data['isbn13'].blank?
+      self.summary = data['summary'] unless data['summary'].blank?
+      # Data looks bad:
+      # if data['subject_ids']
+      #   self.subjects << data['subject_ids'].map do |sid|
+      #     sid.gsub('amazon_com_', '')
+      #   end.map do |sid|
+      #     sid.gsub('_', ' ')
+      #   end.map do |s|
+      #     Subject.find_or_create_by!(name: s)
+      #   end
+      # end
+      self.save!
+    else
+      puts "No data found for book #{id}: #{title}"
+    end
   end
 
   private
+  def lookup_url
+    key = ENV['ISBNDB_KEY']
+    "http://isbndb.com/api/v2/json/#{key}/book/#{title.parameterize('_')}"
+  end
+
+
   def author_name
     author.name
   end
