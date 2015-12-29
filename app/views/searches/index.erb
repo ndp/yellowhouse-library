@@ -42,7 +42,10 @@
         var result = content.hits[i]._highlightResult;
         console.log(result)
         var $li = $('<li>')
-        $li.html('<span class=title>' + result.title.value + '</span>')
+        if (result.isbn13) {
+          $('<img>').attr('src','http://covers.openlibrary.org/b/isbn/'+result.isbn13.value+'-S.jpg').appendTo($li)
+        }
+        $li.append('<span class=title>' + result.title.value + '</span>')
         if (result.author_name.matchLevel !== 'none') {
           $li.append('<br> by ')
           $li.append(result.author_name.value)
@@ -62,6 +65,7 @@
           $li.append('<br>Subjects: ')
           $li.append(result.subject_names.value)
         }
+
 
 
         $li.appendTo($results)

@@ -90,3 +90,7 @@ li .title em {
   color: #a1d0FF;
   /*font-weight: 800;*/
 }
+li img {
+  float: left;
+  margin-right: 30px;
+}
