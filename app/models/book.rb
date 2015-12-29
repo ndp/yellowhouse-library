@@ -11,7 +11,9 @@ class Book < ActiveRecord::Base
 
   include AlgoliaSearch
   algoliasearch index_name: "Book_#{Rails.env}" do
-    attribute :title, :author_name, :genre_name, :subject_names, :character_names
+    attribute :title, :author_name, :genre_name, :subject_names, :character_names, :isbn13
+  end
+
   def fetch_book_info
     conn = Faraday.new(:url => 'http://isbndb.com/api/v2/json/1VRHA2TN/book')
     response = conn.get title.parameterize('_')
