@@ -58,6 +58,8 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
@@ -87,6 +89,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    multipart-post (2.0.0)
     nested_form (0.3.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -180,6 +183,7 @@ DEPENDENCIES
   algoliasearch-rails
   byebug
   coffee-rails (~> 4.1.0)
+  faraday
   jbuilder (~> 2.0)
   jquery-rails
   pg
