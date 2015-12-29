@@ -14,12 +14,6 @@ class Book < ActiveRecord::Base
     attribute :title, :author_name, :genre_name, :subject_names, :character_names, :isbn13
   end
 
-  def fetch_book_info
-    conn = Faraday.new(:url => 'http://isbndb.com/api/v2/json/1VRHA2TN/book')
-    response = conn.get title.parameterize('_')
-    JSON.parse(response.body)
-  end
-
   def fetch_and_save_book_info
     json = fetch_book_info
     if json['data']
@@ -44,11 +38,11 @@ class Book < ActiveRecord::Base
   end
 
   private
-  def lookup_url
-    key = ENV['ISBNDB_KEY']
-    "http://isbndb.com/api/v2/json/#{key}/book/#{title.parameterize('_')}"
+  def fetch_book_info
+    conn = Faraday.new(:url => "http://isbndb.com/api/v2/json/#{ENV['ISBNDB_KEY']}/book")
+    response = conn.get title.parameterize('_')
+    JSON.parse(response.body)
   end
-
 
   def author_name
     author.name
