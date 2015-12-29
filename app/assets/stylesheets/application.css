@@ -16,25 +16,77 @@
 html, body, h2 {
   margin: 0;
   padding: 0;
+  background-color: #1A487F;
+  color: #80BAFF;
+
 }
+
+/*<ul class="themeBox">
+<li title="#1A487F" style="background: #1A487F">
+</li><li title="#80BAFF" style="background: #80BAFF"
+></li><li title="#3391FF" style="background: #3391FF"></li
+><li title="#405D7F" style="background: #405D7F"></li><
+li title="#2974CC" style="background: #2974CC"></li></ul>*/
 
 body, input, ul, li, h2 {
   font-family: 'Lora', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 20px;
 }
 
 h2 {
-  background-color: cornsilk;
-  color: darkolivegreen;
-  padding: 20px;
+  background-color: #1A487F;
+  background-color: #2974CC;
+  color: #80BAFF;
+  padding: 0 20px 20px 20px;
+  font-variant: small-caps;
+  font-size: 20px;
+  text-align:center;
+}
+h2:first-letter {
+  font-size:40px;
 }
 input {
   padding: 10px 20px;
+  background-color: #80BAFF;
+  font-weight: 500;
+  color: black;
+  box-sizing: border-box;
+}
+input::-webkit-input-placeholder {
+  font-weight: 400;
+  color: white !important;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  font-weight: 400;
+  color: white !important;
+}
+input::-moz-placeholder {  /* Firefox 19+ */
+  font-weight: 400;
+  color: white !important;
+}
+input:-ms-input-placeholder {
+  font-weight: 400;
+  color: white !important;
 }
 
 li {
-  /*font-size: 16px;*/
+  font-size: 16px;
+  list-style-type: circle;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
-li:first-line {
-  font-weight: bold;
+li em {
+  font-style: normal;
+  color: #a1d0FF;
+  /*font-weight: 500;*/
+}
+li .title {
+  font-weight: 500;
+  font-size: 20px;
+}
+li .title em {
+  color: #a1d0FF;
+  /*font-weight: 800;*/
 }
