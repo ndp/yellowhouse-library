@@ -77,10 +77,13 @@ class Book < ActiveRecord::Base
     end
     edit do
       field :title
+      field :isbn10
+      field :isbn13
       field :author
       field :genre
       field :subjects
       field :characters
+      field :summary, :text
     end
   end
 
